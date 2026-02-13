@@ -7,6 +7,10 @@
     <meta
       name="description"
       content="Get a random FAMAT-style problem by regional source and test level."
+    <title>FAMAT Problem Hub</title>
+    <meta
+      name="description"
+      content="Practice FAMAT-style problems by subject, source test, and question number."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,6 +38,10 @@
       <h1>AMCtrivial-style random pulls, tuned for FAMAT.</h1>
       <p class="subtitle">
         Pick a regional source and test level, then draw a random problem with LaTeX support.
+      <p class="eyebrow">FAMAT PRACTICE PORTAL</p>
+      <h1>Explore polished, LaTeX-ready FAMAT problems.</h1>
+      <p class="subtitle">
+        A modern black-and-blue interface for solving one curated sample problem in each category.
       </p>
     </header>
 
@@ -59,6 +67,26 @@
       <section>
         <div id="pool-count" class="problem-count" aria-live="polite"></div>
         <article id="problem-card" class="problem-card"></article>
+      <section class="filters" aria-label="Problem filters">
+        <h2>Filter Problems</h2>
+        <label>
+          Subject
+          <select id="subject-filter">
+            <option value="all">All Subjects</option>
+          </select>
+        </label>
+        <label>
+          Source Test
+          <select id="source-filter">
+            <option value="all">All Sources</option>
+          </select>
+        </label>
+        <button id="reset-btn" type="button">Reset Filters</button>
+      </section>
+
+      <section>
+        <div id="problem-count" class="problem-count" aria-live="polite"></div>
+        <div id="problem-grid" class="problem-grid"></div>
       </section>
     </main>
   </body>

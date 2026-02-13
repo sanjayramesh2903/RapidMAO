@@ -12,6 +12,20 @@ A production-ready static site for drawing random FAMAT-style sample problems by
 - Sleek black/blue visual style with vibrant gradients and glassmorphism cards.
 - Built-in LaTeX rendering using MathJax.
 - Instant filter controls and reset behavior.
+# FAMAT Problem Hub
+
+A production-ready static site for browsing FAMAT-style sample problems by:
+
+- Subject division (Alg 1, Geometry, Stats, Alg 2, Calc, Precalc)
+- Source test (January Regional, February Regional, March Regional)
+- Question number
+
+## Features
+
+- Sleek black/blue visual style inspired by futuristic editorial web design.
+- One curated sample problem per requested category.
+- Built-in LaTeX rendering using MathJax.
+- Instant filtering by subject and source.
 - GitHub Pages deployment workflow included.
 
 ## Local preview
