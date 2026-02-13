@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-white text-black;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.dark body {
+  @apply bg-zinc-950 text-zinc-100;
+}
+
+input:focus {
+  outline: none;
+}
