@@ -43,6 +43,22 @@ const problems = [
   }
 ];
 
+function getElements() {
+  const sourceFilter = document.getElementById('source-filter');
+  const levelFilter = document.getElementById('level-filter');
+  const randomBtn = document.getElementById('random-btn');
+  const resetBtn = document.getElementById('reset-btn');
+  const problemCard = document.getElementById('problem-card');
+  const poolCount = document.getElementById('pool-count');
+
+  if (!sourceFilter || !levelFilter || !randomBtn || !resetBtn || !problemCard || !poolCount) {
+    throw new Error('Missing required UI elements for problem randomizer');
+  }
+
+  return { sourceFilter, levelFilter, randomBtn, resetBtn, problemCard, poolCount };
+}
+
+function filteredProblems(sourceFilter, levelFilter) {
 const sourceFilter = document.getElementById('source-filter');
 const levelFilter = document.getElementById('level-filter');
 const randomBtn = document.getElementById('random-btn');
@@ -142,6 +158,11 @@ function filteredProblems() {
   });
 }
 
+function updatePoolCount(poolCount, pool) {
+  poolCount.textContent = `Current random pool: ${pool.length} problem${pool.length === 1 ? '' : 's'}.`;
+}
+
+function renderProblem(problemCard, problem) {
 function updatePoolCount(pool) {
   poolCount.textContent = `Current random pool: ${pool.length} problem${pool.length === 1 ? '' : 's'}.`;
 }
@@ -162,6 +183,7 @@ function renderProblem(problem) {
   }
 }
 
+function renderNoMatch(problemCard) {
 function renderNoMatch() {
   problemCard.innerHTML = `
     <div class="no-results">
@@ -170,6 +192,32 @@ function renderNoMatch() {
   `;
 }
 
+function bootstrapRandomizer() {
+  const { sourceFilter, levelFilter, randomBtn, resetBtn, problemCard, poolCount } = getElements();
+
+  const pickRandomProblem = () => {
+    const pool = filteredProblems(sourceFilter, levelFilter);
+    updatePoolCount(poolCount, pool);
+
+    if (!pool.length) {
+      renderNoMatch(problemCard);
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * pool.length);
+    renderProblem(problemCard, pool[randomIndex]);
+  };
+
+  randomBtn.addEventListener('click', pickRandomProblem);
+
+  sourceFilter.addEventListener('change', () => {
+    const pool = filteredProblems(sourceFilter, levelFilter);
+    updatePoolCount(poolCount, pool);
+  });
+
+  levelFilter.addEventListener('change', () => {
+    const pool = filteredProblems(sourceFilter, levelFilter);
+    updatePoolCount(poolCount, pool);
 function pickRandomProblem() {
   const pool = filteredProblems();
   updatePoolCount(pool);
@@ -200,6 +248,12 @@ function setupEventListeners() {
     sourceFilter.value = 'all';
     levelFilter.value = 'all';
     pickRandomProblem();
+  });
+
+  pickRandomProblem();
+}
+
+document.addEventListener('DOMContentLoaded', bootstrapRandomizer);
 }
 
 function renderProblems() {
