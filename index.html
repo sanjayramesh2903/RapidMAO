@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAMAT Randomizer</title>
+    <meta
+      name="description"
+      content="Get a random FAMAT-style problem by regional source and test level."
     <title>FAMAT Problem Hub</title>
     <meta
       name="description"
@@ -30,6 +34,10 @@
     <div class="bg-grid"></div>
 
     <header class="hero">
+      <p class="eyebrow">FAMAT RANDOM PROBLEM GENERATOR</p>
+      <h1>AMCtrivial-style random pulls, tuned for FAMAT.</h1>
+      <p class="subtitle">
+        Pick a regional source and test level, then draw a random problem with LaTeX support.
       <p class="eyebrow">FAMAT PRACTICE PORTAL</p>
       <h1>Explore polished, LaTeX-ready FAMAT problems.</h1>
       <p class="subtitle">
@@ -38,6 +46,27 @@
     </header>
 
     <main class="main-layout">
+      <section class="filters" aria-label="Problem randomizer filters">
+        <h2>Randomizer Controls</h2>
+        <label>
+          Regional Source
+          <select id="source-filter">
+            <option value="all">Any Regional</option>
+          </select>
+        </label>
+        <label>
+          Test Level
+          <select id="level-filter">
+            <option value="all">Any Level</option>
+          </select>
+        </label>
+        <button id="random-btn" type="button">Give Me a Random Problem</button>
+        <button id="reset-btn" class="ghost-btn" type="button">Reset Filters</button>
+      </section>
+
+      <section>
+        <div id="pool-count" class="problem-count" aria-live="polite"></div>
+        <article id="problem-card" class="problem-card"></article>
       <section class="filters" aria-label="Problem filters">
         <h2>Filter Problems</h2>
         <label>
