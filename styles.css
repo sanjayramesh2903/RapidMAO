@@ -4,6 +4,7 @@
   --panel-border: rgba(90, 145, 255, 0.35);
   --text: #ecf2ff;
   --muted: #9fb3d4;
+  --accent: #2c90ff;
   --accent-strong: #5cb3ff;
   --shadow: 0 16px 60px rgba(10, 72, 180, 0.35);
 }
@@ -73,6 +74,7 @@ h1 {
   font-size: clamp(2rem, 3.2vw, 3.4rem);
   line-height: 1.15;
   max-width: 760px;
+  max-width: 720px;
 }
 
 .subtitle {
@@ -94,6 +96,13 @@ h1 {
 
 .filters,
 .problem-card {
+  grid-template-columns: minmax(220px, 260px) 1fr;
+  align-items: start;
+}
+
+.filters {
+  position: sticky;
+  top: 1rem;
   background: var(--panel);
   border: 1px solid var(--panel-border);
   border-radius: 16px;
@@ -145,12 +154,30 @@ button {
   background: rgba(17, 32, 68, 0.85);
   border: 1px solid rgba(105, 164, 255, 0.5);
   color: #d6e8ff;
+  background: linear-gradient(135deg, #237eff, #44bcff);
+  color: #021026;
+  border: none;
 }
 
 .problem-count {
   color: var(--muted);
   margin: 0.45rem 0 1rem;
   font-size: 0.95rem;
+}
+
+.problem-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.problem-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
 }
 
 .card-meta {
@@ -176,6 +203,11 @@ button {
 
 .problem-statement {
   line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.problem-statement {
+  line-height: 1.5;
   color: #eaf3ff;
 }
 
